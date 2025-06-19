@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import  { useContext } from 'react'
 import { ShoppingCardContext } from '../Hook/ProductContext'
 import ProductTail from '../components/ProductTail'
 

@@ -40,19 +40,51 @@ function GlobelShopping({ children }) {
         
       })
     }else{
-      console.log("This Product Allready have...")
+      // console.log(findIndexOfCurrentItem)
+      copExistingCardItems[findIndexOfCurrentItem] = {
+        ...copExistingCardItems[findIndexOfCurrentItem],
+        quantity : copExistingCardItems[findIndexOfCurrentItem].quantity + 1,
+        TotailPrice : (copExistingCardItems[findIndexOfCurrentItem].quantity  + 1)  * copExistingCardItems[findIndexOfCurrentItem].price
+      }
     }
 
     // console.log(copExistingCardItems)
     setCardItems(copExistingCardItems)
-    localStorage.setItem('cardItem', JSON.stringify(copExistingCardItems))
+    localStorage.setItem('cartItem', JSON.stringify(copExistingCardItems))
     navigate('/card')
   }
 
-  // console.log(cardItems)
+
+  function handleRemoveToCard(getProductDetails , isFullyRemoveFromCard) {
+    let cpyExistingCardItems = [...cardItems];
+    const findIndexOfCurrentCardItem = cpyExistingCardItems.findIndex(item => item.id === getProductDetails.id)
+    if (isFullyRemoveFromCard) {
+      cpyExistingCardItems.splice(findIndexOfCurrentCardItem , 1)
+    }else{
+      cpyExistingCardItems[findIndexOfCurrentCardItem]={
+        ...cpyExistingCardItems[findIndexOfCurrentCardItem],
+        quantity : cpyExistingCardItems[findIndexOfCurrentCardItem].quantity - 1,
+        TotailPrice : (cpyExistingCardItems[findIndexOfCurrentCardItem].quantity - 1) * cpyExistingCardItems[findIndexOfCurrentCardItem].price
+      }
+    }
+
+    localStorage.setItem('cartItem', JSON.stringify(cpyExistingCardItems))
+    setCardItems(cpyExistingCardItems)
+    console.log(getProductDetails)
+  }
+
+
+
+
+
+
+
+
+  
 
   useEffect(() => {
     fetchProductData();
+    setCardItems(JSON.parse(localStorage.getItem('cartItem') || "[]"))
   }, []);
 
   return (
@@ -66,6 +98,7 @@ function GlobelShopping({ children }) {
         cardItems,
         setCardItems,
         handleAddToCard,
+        handleRemoveToCard,
       }}
     >
       {children}
