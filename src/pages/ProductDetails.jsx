@@ -30,10 +30,10 @@ const ProductDetails = () => {
     fetchProductDetails();
   }, []);
 
-  // function handleGoToCard() {
-  //   handleGoToCard()
-  //   navigate('/Card')
-  // }
+  function handleGoToCard() {
+    // handleGoToCard()
+    navigate('/Card')
+  }
 
   if (loading) return <h1>Product Details Loading...</h1>;
   return (
@@ -75,6 +75,7 @@ const ProductDetails = () => {
                 // onClick={() => {
                 //   handleGoToCard(ProductDetails);
                 // }}
+                // onClick={handleGoToCard}
                 onClick={() => {
                   handleAddToCard(ProductDetails); // ✅ correct function name
                 }}
