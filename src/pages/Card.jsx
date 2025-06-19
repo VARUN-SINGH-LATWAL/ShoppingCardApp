@@ -27,7 +27,7 @@ const Card = () => {
                 </p>
             </ul>
             <div className='mt-5 flex  gap-2'>
-                <button className='text-sm px-4 py-3 bg-black text-white font-extrabold'>
+                <button disabled={cardItems.length === 0}  className='disabled:opacity-70 text-sm px-4 py-3 bg-black text-white font-extrabold'>
                   Checkout 
                 </button>
 

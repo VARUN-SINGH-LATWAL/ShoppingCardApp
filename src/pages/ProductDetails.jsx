@@ -11,6 +11,7 @@ const ProductDetails = () => {
     setLoading,
     loading,
     handleAddToCard,
+    cardItems,
   } = useContext(ShoppingCardContext);
 
   async function fetchProductDetails() {
@@ -30,10 +31,6 @@ const ProductDetails = () => {
     fetchProductDetails();
   }, []);
 
-  function handleGoToCard() {
-    // handleGoToCard()
-    navigate('/Card')
-  }
 
   if (loading) return <h1>Product Details Loading...</h1>;
   return (
@@ -75,11 +72,12 @@ const ProductDetails = () => {
                 // onClick={() => {
                 //   handleGoToCard(ProductDetails);
                 // }}
+                disabled={ProductDetails ? cardItems.findIndex(item => item.id === ProductDetails.id ) > -1 : false}
                 // onClick={handleGoToCard}
                 onClick={() => {
                   handleAddToCard(ProductDetails); // ✅ correct function name
                 }}
-                className="mt-5 min-w-[200px] px-4 py-3 border border-[#333] bg-transparent text-sm font-semibold rounded"
+                className="disabled:opacity-65 mt-5 min-w-[200px] px-4 py-3 border border-[#333] bg-transparent text-sm font-semibold rounded"
               >
                 Add to Card
               </button>

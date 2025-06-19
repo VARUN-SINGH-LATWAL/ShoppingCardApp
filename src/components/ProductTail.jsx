@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { ShoppingCardContext } from "../Hook/ProductContext";
 
 const ProductTail = ({ singleItem }) => {
     const navigate = useNavigate()
+    const {handleAddToCard , cardItems } = useContext(ShoppingCardContext)
 
     function handleNavigateToProductDetailsPage (getCurrentProductId) {
         // console.log(getCurrentProductId,navigate)
@@ -31,6 +33,7 @@ const ProductTail = ({ singleItem }) => {
         </div>
       </div>
       <button onClick={()=>handleNavigateToProductDetailsPage(singleItem?.id)} className="px-5 mt-5 w-full py-2 rounded-none bg-black text-white font-bold text-lg" >View Details</button>
+      <button onClick={()=>handleAddToCard(singleItem)} disabled={cardItems.findIndex(item => item.id === singleItem.id) > -1 } className="disabled:opacity-70 px-5 mt-5 w-full py-2 rounded-none bg-black text-white font-bold text-lg" >Add TO Card</button>
     </div>
   );
 };
