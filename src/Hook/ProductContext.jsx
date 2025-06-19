@@ -28,7 +28,7 @@ function GlobelShopping({ children }) {
   };
 
   function handleAddToCard(getProductDetails) {
-    console.log(getProductDetails)
+    // console.log(getProductDetails)
     let copExistingCardItems = [...cardItems]
     const findIndexOfCurrentItem = copExistingCardItems.findIndex((cardItems)=> cardItems.id === getProductDetails.id)
     console.log(findIndexOfCurrentItem)

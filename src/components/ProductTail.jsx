@@ -15,7 +15,6 @@ const ProductTail = ({ singleItem }) => {
           src={singleItem?.thumbnail}
           alt={singleItem?.title}
           className="object-cover w-full h-full transition-all duration-300 group-hover:scale-125"
-          srcset=""
         />{" "}
       </div>
       <div className="flex items-start justify-between mt-4 space-x-4">

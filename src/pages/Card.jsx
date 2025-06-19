@@ -13,7 +13,7 @@ const Card = () => {
           <div className='md:col-span-2 space-y-2'>
               {
                 cardItems?.length ? 
-                cardItems?.map(singleCardItem=> <CardTile/> )
+                cardItems?.map(singleCardItem=> <CardTile key={singleCardItem.id} singleCardItem={singleCardItem}/> )
                 : <h1>No items available in card!</h1>
               }
           </div>

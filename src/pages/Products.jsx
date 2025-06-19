@@ -4,7 +4,7 @@ import ProductTail from '../components/ProductTail'
 
 const Products = () => {
   const {Product , loading } = useContext(ShoppingCardContext)
-  console.log(Product)
+  // console.log(Product)
 
   if(loading) return <h1>Loading Data !</h1>
   return (
@@ -16,7 +16,7 @@ const Products = () => {
         <div className='grid grid-cols-2 gap-5 mt-10 lg:mt-16 lg:gap-8 lg:grid-cols-4'>
              {
         Product && Product.length > 0 ? 
-        Product.map(singleItem => <ProductTail singleItem={singleItem} /> )
+        Product.map(singleItem => <ProductTail key={singleItem.id} singleItem={singleItem} /> )
         : "Data not found"
       }
         </div>

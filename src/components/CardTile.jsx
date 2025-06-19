@@ -1,8 +1,29 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 
-const CardTile = () => {
+const CardTile = ({singleCardItem}) => {
+  // console.log(singleCardItem)
   return (
-    <div>CardTile</div>
+    <Fragment>
+      <div className='grid grid-cols-3 items-start gap-5'>
+      <div className='col-span-2 flex items-start gap-4'>
+        <div className='w-28 h-28 max-sm:w-20 shrink-0 bg-gray-400 p-1 rounded-sm '>
+          <img src={singleCardItem?.thumbnail} className='w-full h-full object-contain'  />
+        </div>
+        <div>
+          <h3 className='text-base font-bold text-gray-900' >{singleCardItem?.title}</h3>
+          <button className='text-sm px-4 py-3 bg-black text-white font-extrabold'>REMOVE</button>
+        </div>
+      </div>
+      <div className='ml-auto '>
+        <h3 className='text-lg font-bold text-gray-800' >${singleCardItem?.TotailPrice.toFixed(2)}</h3>
+        <div className='mt-3'>
+          <button className='px-3 py-1 border border-[#000]'>-</button>
+          <button className='px-3 py-1 border border-[#000]'>+</button>
+        </div>
+      </div>
+    </div>
+    <hr className='border-gray-300' />
+    </Fragment>
   )
 }
 
